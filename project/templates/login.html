@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="height: 2px;width: 100%"></div>
+<div class="p-4 pt-2 back h-100" 
+    style="background-image: url(../static/img/imagen2.jpg); background-size: 100% 100%;height:100%; width: 100%;">
+
+    <h4 class="text-center text-light">Ingresar</h4>
+    <div class="container text-light back502" style="margin-top: 32px;">
+
+            <div class="col-4 p-4">
+                <form action="/login" method="POST">
+                    {% with messages = get_flashed_messages() %}{% if messages %}<div class="bg-danger m-2 p-2 rounded">{{ messages[0] }}</div>{% endif %}{% endwith %}
+
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+                    <label for="" class="w-25">Correo:</label>
+                    <br>
+                    <input type="email" id="correo" name="correo"   style="border-radius:5px" required>
+                    <br><br>
+                    <label for="" class="w-25">Contraseña:</label>
+                    <br>
+                    <input type="password" id="pass" name="contrasena"  style="border-radius:5px" required>
+                    
+                    <br><br>
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("load", 
+        document.getElementById('correo').value = 'ana@gmail.com',
+        document.getElementById('pass').value = '1234'
+    );
+</script>
+{% endblock content %}

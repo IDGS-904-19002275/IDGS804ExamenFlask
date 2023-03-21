@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div style="height: 2px;width: 100%"></div>
+<div class="p-4 pt-2 back h-100" 
+    style="background-image: url(../static/img/imagen2.jpg);background-size: 100% 100%; height:100%; width: 100%;">
+
+    <h4 class="text-center text-light">Registrarse</h4>
+    <div class="container text-light back502" style="margin-top: 32px;">
+
+            <div class="col-4 p-4">
+                <form action="/singup" method="POST">
+                    {% with messages = get_flashed_messages() %}{% if messages %}<div class="bg-danger m-2 p-2 rounded">{{ messages[0] }}</div>{% endif %}{% endwith %}
+
+                    <input type="hidden" name="csrf_token" value="{{csrf_token()}}"/>
+
+                    <label for="" class="w-25">Nombre:</label>
+                    <br><br>
+                    <input type="text" name="nombre" style="border-radius:5px" required>
+                    <br><br>
+                    <label for="" class="w-25">Correo:</label>
+                    <br><br>
+                    <input type="email" name="correo" style="border-radius:5px" required>
+                    <br><br>
+                    <label for="" class="w-25">Contraseña:</label>
+                    <br><br>
+                    <input type="password" name="contrasena" style="border-radius:5px" required>
+                    <br><br>
+                    <button type="submit" class="btn btn-primary" style="border-radius:10px;">Entrar</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

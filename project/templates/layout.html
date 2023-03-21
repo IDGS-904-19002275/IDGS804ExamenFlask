@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/estilos.css">
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+
+    <title>PaginaPrincipal</title>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Inicio<span class="sr-only"></span></a>
+                    </li>
+                    {% if current_user.rol == 'admin' or 'comun' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="GaleriaDeProductos">Galeria</a>
+                    </li>
+                    {%endif%}
+                    <li class="nav-item">
+                        <a class="nav-link" href="Contacto">Contacto</a>
+                    </li>
+                    {% if current_user.rol == 'admin' %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="SeccionDeAdministrador">Administración</a>
+                    </li>
+                    {%endif%}
+                </ul>
+                <ul class="navbar-nav mr-auto">
+                    {% if not current_user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="singup">SingUp</a>
+                    </li>
+                    {%endif%}
+                    {% if current_user.is_authenticated %}
+                    <li class="nav-item float-end">
+                        <a class="nav-link" href="logout">Logout</a>
+                    </li>
+                    {%endif%}
+                </ul>
+            </div>
+        </nav>
+
+        
+    </div>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+
+
+    
+    
+</body>
+
+</html>
